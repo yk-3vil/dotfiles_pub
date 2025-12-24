@@ -92,6 +92,10 @@ set wrap
 " 対応する括弧を表示
 set showmatch
 
+" TAB文字の可視化
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
 "############################################################
 " インデント
 "############################################################
@@ -109,10 +113,6 @@ set shiftwidth=2
 
 " 自動でインデント
 set autoindent
-
-" TAB文字の可視化
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 "############################################################
 " 操作系
