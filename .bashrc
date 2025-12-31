@@ -139,6 +139,20 @@ fi
 export EDITOR='vim'
 
 #################################################
+# local function
+#################################################
+# cd ls複合
+function cdls(){
+    \cd $1;
+    ls;
+}
+
+#################################################
+# エイリアス
+#################################################
+alias cdls='cdls'
+
+#################################################
 # 履歴の共有
 #################################################
 
@@ -161,17 +175,41 @@ shopt -u histappend
 
 #################################################
 # .env_list
+# パスワードを含む環境変数の設定ファイル
 #################################################
 
 # 指定したファイルから環境変数を export する
 function set_env() {
-    env_file=/tmp/env_$RANDOM
-    cat "$1" | grep -v -e "^\s*#" -e "^\s*$" | awk '{ print "export " $1 "=" "'\''" $2 "'\''" }' | cat >>$env_file && source $env_file && rm $env_file
+    local _env_file
+    _env_file=/tmp/env_$RANDOM
+    # コメントと空行を削除したものを一時ファイルに
+    grep -v -E '^[[:space:]]*#|^[[:space:]]*$' "$1" > "$_env_file"
+
+    # そのファイルのすべての変数を export するようにして読み込む
+    set -a      # 以降に読み込む変数を自動で export
+    source "$_env_file"
+    set +a
+    rm -f "$_env_file"
 }
 
 # 指定したファイルから環境変数を unset する
 function unset_env() {
-    unset $(cat "$1" | grep -v -e "^\s*#" -e "^\s*$" | awk '{ print $1 }' | xargs echo)
+    local _unset_target
+    local _
+
+    # コメントと空行を除外しつつ、左辺（変数名）だけを読む
+    while IFS='=' read -r _unset_target _; do
+        [[ -z "$name" ]] && continue
+        unset "$name"
+    done < <(grep -v -E '^[[:space:]]*#|^[[:space:]]*$' "$1")
 }
 
 set_env ~/.env_list
+
+#################################################
+# Custom Aliases
+# WSL2用
+#################################################
+export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+alias open='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+alias ii='open'
