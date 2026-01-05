@@ -23,12 +23,6 @@ shopt -s histappend
 HISTSIZE=500000
 HISTFILESIZE=500000
 
-# History duplicate
-HISTCONTROL=ignoredups
-
-# Start space
-HISTCONTROL=ignorespace
-
 # history not
 HISTIGNORE="history*"
 
