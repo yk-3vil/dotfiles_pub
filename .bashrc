@@ -24,7 +24,7 @@ HISTSIZE=500000
 HISTFILESIZE=500000
 
 # history not
-HISTIGNORE="history*"
+HISTIGNORE="history*:pwd*:ls*:cdls*"
 
 # history format
 HISTTIMEFORMAT='%F %T '
