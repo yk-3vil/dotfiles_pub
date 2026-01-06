@@ -68,8 +68,8 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 colorscheme molokai
 set t_Co=256
 
-" 行番号を表示
-set number
+" 行番号を表示 (相対番号も表示)
+set number relativenumber
 
 " ルーラー表示
 set ruler
@@ -86,6 +86,9 @@ set showcmd
 " カーソルのある行の色を変える
 set cursorline
 
+" カーソルのある列の色を変える
+set cursorcolumn
+
 " 長い行は改行
 set wrap
 
@@ -98,6 +101,9 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " ビープ音を可視化
 set visualbell
+
+" 桁幅の調整
+set numberwidth=4
 
 "############################################################
 " インデント
