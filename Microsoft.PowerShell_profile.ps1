@@ -1,25 +1,25 @@
 ################################################################################
-# PowerShellã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ã‚¯ãƒªãƒ—ãƒˆ                                           #
+# PowerShell‚Ìƒvƒƒtƒ@ƒCƒ‹ƒXƒNƒŠƒvƒg
 ################################################################################
 function prompt() {
-  # ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’å–å¾—
+  # ƒ†[ƒU[–¼‚ğæ“¾
   $userName = $env:USERNAME
   
-  # PCåã‚’å–å¾—ã€å°æ–‡å­—ã«å¤‰æ›
+  # PC–¼‚ğæ“¾A¬•¶š‚É•ÏŠ·
   $computerName = $env:COMPUTERNAME.ToLower()
   
-  # ãƒ‰ãƒ©ã‚¤ãƒ–ãƒ¬ã‚¿ãƒ¼ã‚’å–å¾—
+  # ƒhƒ‰ƒCƒuƒŒƒ^[‚ğæ“¾
   $driveLetter = $(Get-Location).Drive.Name
 
-  # ãƒ‰ãƒ©ã‚¤ãƒ–å(C:)ã‚’é™¤ã„ã¦ã€ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ãƒãƒ«ãƒ€(~)ã§è¡¨ç¤º
-  $editHomePath = $(Get-Location).Replace($HOME, "~").Replace("${driveLetter}:", "")
+  # ƒhƒ‰ƒCƒu–¼(C:)‚ğœ‚¢‚ÄAƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚Íƒ`ƒ‹ƒ_(~)‚Å•\¦
+  $editHomePath = $(Get-Location).Path.Replace($HOME, "~").Replace("${driveLetter}:", "")
 
-  # ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã®è¡¨ç¤ºå½¢å¼ã‚’è¨­å®š
-  # userName@PCå: ~
+  # ƒvƒƒ“ƒvƒg‚Ì•\¦Œ`®‚ğİ’è
+  # userName@PC–¼: ~
   # $ 
   Write-Host "$userName@$computerName" -ForegroundColor "DarkGreen" -NoNewline
   Write-Host ":" -NoNewline
-  Write-Host "$editHomePath" -ForegroundColor "DarkGreen" -NoNewline
+  Write-Host "$editHomePath" -ForegroundColor "DarkBlue"
+  Write-Host "$" -ForegroundColor "DarkGreen" -NoNewline
   return " "
-  
 }
