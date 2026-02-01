@@ -1,0 +1,2 @@
+[alias]
+	wta = "!f() { reponame=$(basename \"$(git rev-parse --show-toplevel)\"); git worktree add \"../wt-${reponame}-$1\" \"$1\"; }; f"
