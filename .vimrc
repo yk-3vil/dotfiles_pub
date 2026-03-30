@@ -82,6 +82,7 @@ let maplocalleader = "\<Space>"
 "############################################################
 " 環境設定
 "############################################################
+set nomodeline
 set nowritebackup
 set nobackup
 set noswapfile
