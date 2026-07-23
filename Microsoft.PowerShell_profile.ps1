@@ -36,8 +36,9 @@ function Get-PromptGitBranch() {
       return $null
     }
   }
+  $gitMarker = "git://"
 
-  return $branch
+  return "$gitMarker$branch"
 }
 
 function Get-PromptPath() {
