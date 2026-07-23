@@ -1,22 +1,22 @@
 ################################################################################
-# PowerShellのプロファイルスクリプト
+# PowerShell Profile
 ################################################################################
 function prompt() {
-  # ユーザー名を取得
+  # Get User Name
   $userName = $env:USERNAME
   
-  # PC名を取得、小文字に変換
+  # Get Computer Name
   $computerName = $env:COMPUTERNAME.ToLower()
   
-  # ドライブレターを取得
+  # Get Current Drive Letter
   $driveLetter = $(Get-Location).Drive.Name
 
-  # ドライブ名(C:)を除いて、ホームディレクトリはチルダ(~)で表示
+  # Get Current Path (C:) and replace home directory with ~
   $editHomePath = $(Get-Location).Path.Replace($HOME, "~").Replace("${driveLetter}:", "")
 
-  # プロンプトの表示形式を設定
-  # userName@PC名: ~
-  # $ 
+# Set the prompt display format
+# userName@PCName: ~
+# $
   Write-Host "$userName@$computerName" -ForegroundColor "DarkGreen" -NoNewline
   Write-Host ":" -NoNewline
   Write-Host "$editHomePath" -ForegroundColor "DarkBlue"
