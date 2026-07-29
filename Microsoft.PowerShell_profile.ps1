@@ -52,7 +52,7 @@ function Get-PromptPath() {
     $path = $path.Replace("$($location.Drive.Name):", "")
   }
 
-  return $path
+  return $path.Replace("\", "/")
 }
 
 function prompt() {
